@@ -234,43 +234,63 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       
-      <!-- Kolom Kiri: Visual / Gambar -->
-      <div class="relative">
-        <!-- Dekorasi Latar Belakang -->
-        <div class="absolute -top-4 -left-4 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl"></div>
-        <div class="absolute -bottom-4 -right-4 w-72 h-72 bg-indigo-500/20 rounded-full blur-3xl"></div>
-        
-        <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-100 dark:border-slate-800">
-          <img 
-            src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" 
-            alt="Interior Kavinsky Living" 
-            class="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-500"
-          >
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <div class="absolute bottom-6 left-6 right-6 text-white">
-            <p class="text-sm font-semibold tracking-wider uppercase text-blue-300">Kavinsky Living</p>
-            <p class="text-xl font-bold">Rumah Kedua Anda di Mana Pun Anda Berada</p>
-            <html class="scroll-smooth"></html> 
+      <!-- Kolom Kiri: Visual / Gambar (Auto Slider Sejarah) -->
+<div class="relative">
+  <!-- Dekorasi Latar Belakang -->
+  <div class="absolute -top-4 -left-4 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl"></div>
+  <div class="absolute -bottom-4 -right-4 w-72 h-72 bg-indigo-500/20 rounded-full blur-3xl"></div>
+  
+  <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-100 dark:border-slate-800 bg-slate-900">
+    <!-- Image Slider Container -->
+    <div class="relative h-[400px]">
+      <img 
+        id="history-slide-img"
+        src="" 
+        alt="Sejarah Kavinsky Living" 
+        class="w-full h-[400px] object-cover transition-all duration-700 ease-in-out hover:scale-105"
+      >
+      
+      <!-- Overlay Gradient -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+      
+      <!-- Text Description Overlay -->
+      <div class="absolute bottom-6 left-6 right-6 text-white z-10 space-y-1">
+        <div class="flex justify-between items-center mb-1">
+          <p id="history-slide-tag" class="text-xs font-semibold tracking-wider uppercase text-blue-300 bg-blue-950/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-blue-500/30 w-max">
+            <!-- Tag Tahun/Era -->
+          </p>
+          <!-- Indicator Dots -->
+          <div id="history-dots" class="flex space-x-1.5">
+            <!-- Dots di-generate via JS -->
           </div>
         </div>
+        <p id="history-slide-title" class="text-xl font-bold leading-snug">
+          <!-- Judul Sejarah -->
+        </p>
+        <p id="history-slide-desc" class="text-xs text-slate-300 line-clamp-2">
+          <!-- Deskripsi Singkat -->
+        </p>
       </div>
+    </div>
+  </div>
+</div>
 
       <!-- Kolom Kanan: Teks & Cerita -->
       <div class="space-y-6">
         <div>
           <span class="text-blue-600 dark:text-blue-400 font-semibold text-sm uppercase tracking-wider">Tentang Kami</span>
           <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white mt-2 leading-tight">
-            Lebih dari Sekadar Tempat Menginap, Ini Rumah Kedua Anda
+            Menyambut Anda Kembali ke Peraduan yang Teduh
           </h2>
         </div>
 
         <!-- Ukuran font disesuaikan menjadi text-sm sm:text-base -->
         <div class="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
           <p>
-            Di Kavinsky Living, kami percaya bahwa setiap perjalanan layak mendapatkan tempat pulang yang hangat. Kami hadir bukan hanya untuk menyediakan kamar tidur, melainkan sebuah ruang yang memahami kebutuhan Anda akan ketenangan, kenyamanan, dan privasi.
+            Ada alasan mengapa setiap perjalanan selalu merindukan jalan pulang. Di Kavinsky Living, kami merawat kerinduan tersebut melalui tatanan ruang yang tenang, privasi yang terjaga, dan pelayanan yang lahir dari tulusnya keramahtamahan.
           </p>
           <p>
-            Setiap sudut kami rancang dengan sentuhan personal—memadukan kehangatan layaknya rumah sendiri dengan standar kualitas yang membuat Anda bisa benar-benar beristirahat tanpa beban. Selamat datang, mari buat momen menginap Anda terasa begitu berkesan bersama kami.
+            Tanpa perlu riuh oleh kemewahan yang berlebih, kami menyajikan kenyamanan yang sejati—sebuah tempat di mana Anda dapat beristirahat dengan penuh kedamaian. Sampai jumpa di Kavinsky Living, rumah kedua Anda.
           </p>
         </div>
       </div>
@@ -802,5 +822,78 @@
       closeModal(type === 'Login' ? 'loginModal' : 'registerModal');
     }
   </script>
+
+  <!-- SCRIPT SLIDER SEJARAH -->
+<script>
+  // Data Foto Sejarah Kavinsky Living
+  const historySlides = [
+    {
+      img: "https://i.pinimg.com/736x/bc/90/f8/bc90f89814ca967007db6b55e8d4c6e0.jpg",
+      tag: "1928 - Awal Mula",
+      title: "Arsitektur Klasik Era Kolonial",
+      desc: "Bangunan utama berdiri sebagai kediaman bersejarah dengan gaya arsitektur yang megah."
+    },
+    {
+      img: "https://i.pinimg.com/1200x/35/87/e8/3587e8f19c91bb2e96baba1b44db065f.jpg",
+      tag: "1985 - Restorasi Pertama",
+      title: "Pencegahan & Pelestarian Fasad",
+      desc: "Restorasi besar-besaran dilakukan untuk mempertahankan nilai estetika dan kekuatan struktur."
+    },
+    {
+      img: "https://i.pinimg.com/736x/bf/24/9e/bf249efe8dd2c70fc77439d091785403.jpg",
+      tag: "Masa Kini - Kavinsky Living",
+      title: "Rumah Kedua Anda di Mana Pun",
+      desc: "Sentuhan modern tanpa menghilangkan nilai sejarah yang hangat dan penuh kenyamanan."
+    }
+  ];
+
+  let currentHistoryIndex = 0;
+  let historyTimer;
+
+  function renderHistorySlide(index) {
+    const data = historySlides[index];
+    const imgEl = document.getElementById('history-slide-img');
+    
+    // Efek Transisi Memudar (Fade out - Fade in)
+    imgEl.style.opacity = '0.3';
+    
+    setTimeout(() => {
+      imgEl.src = data.img;
+      document.getElementById('history-slide-tag').innerText = data.tag;
+      document.getElementById('history-slide-title').innerText = data.title;
+      document.getElementById('history-slide-desc').innerText = data.desc;
+      imgEl.style.opacity = '1';
+    }, 200);
+
+    renderHistoryDots();
+  }
+
+  function renderHistoryDots() {
+    const dotsContainer = document.getElementById('history-dots');
+    dotsContainer.innerHTML = historySlides.map((_, i) => `
+      <button onclick="goToHistorySlide(${i})" class="h-1.5 rounded-full transition-all duration-300 ${i === currentHistoryIndex ? 'w-5 bg-blue-400' : 'w-1.5 bg-white/40 hover:bg-white/70'}"></button>
+    `).join('');
+  }
+
+  function nextHistorySlide() {
+    currentHistoryIndex = (currentHistoryIndex + 1) % historySlides.length;
+    renderHistorySlide(currentHistoryIndex);
+  }
+
+  function goToHistorySlide(index) {
+    currentHistoryIndex = index;
+    renderHistorySlide(currentHistoryIndex);
+    resetHistoryTimer();
+  }
+
+  function resetHistoryTimer() {
+    clearInterval(historyTimer);
+    historyTimer = setInterval(nextHistorySlide, 4000); // Pergantian otomatis setiap 4 detik
+  }
+
+  // Inisialisasi
+  renderHistorySlide(currentHistoryIndex);
+  resetHistoryTimer();
+</script>
 </body>
 </html>
